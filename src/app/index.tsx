@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native';
-import DayListItem from '../../src/components/core/DayListItem';
+import DayListItem from '@components/core/DayListItem';
 
 
 
