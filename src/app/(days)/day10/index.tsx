@@ -1,24 +1,27 @@
-import { View, Text, SafeAreaView, Button } from 'react-native'
+import { View, Text, Button, SafeAreaView } from 'react-native'
 import React from 'react'
 import { Link, Stack } from 'expo-router'
+import MarkdownDisplay from '@/components/day3/MarkdownDisplay';
+
 
 const description = `
-#Biometrics
-Use FaceID and Fingerprint to unlock the next screen
-`
+  # Biometrics
+  Use FaceID and Fingerprint to unlock the next screen
+`;
 
-const FingerPrintAuth = () => {
+const DayDetailScreen = () => {
   return (
-    <SafeAreaView edges={['bottom']} style={{flex: 1}}>
-      
-      <Stack.Screen options={{title: 'Day 10: Biometrics'}} />
+    <SafeAreaView style={{flex: 1}}>
+      <Stack.Screen options={{title: 'Day 10: Biometric'}}/>
 
-        <Link href="/day10/protected" asChild>
-            <Button title='Go to Protected App'/>
-        </Link>
+      <MarkdownDisplay>{description}</MarkdownDisplay>
 
+      <Text>Day 10</Text>
+      <Link href="/day10/protected" asChild>
+        <Button title='Go to protected App'/>
+      </Link>
     </SafeAreaView>
   )
 }
 
-export default FingerPrintAuth
+export default DayDetailScreen

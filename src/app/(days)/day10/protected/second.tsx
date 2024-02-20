@@ -1,7 +1,7 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text } from 'react-native';
+import React from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
-
+import { Link } from 'expo-router';
 
 const ProtectedScreen = () => {
   return (
@@ -14,13 +14,13 @@ const ProtectedScreen = () => {
       }}
     >
       <Text style={{ fontFamily: 'Inter', fontSize: 20, marginBottom: 20 }}>
-        Protected Info
+        More protected info
       </Text>
       <FontAwesome5 name="lock" size={75} color="gray" />
 
-      {/* <Link href={'/day10/protected/second'}>Next page</Link> */}
+      <Link href={'/day10/protected/index'}>Prev page</Link>
     </View>
-  )
-}
+  );
+};
 
-export default ProtectedScreen
+export default ProtectedScreen;
