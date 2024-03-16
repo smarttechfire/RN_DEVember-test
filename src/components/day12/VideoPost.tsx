@@ -1,5 +1,5 @@
-import {  Pressable, StyleSheet, Text, View } from 'react-native'
-import React, { useRef, useState } from 'react'
+import {  Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native'
+import React, { useEffect, useRef, useState } from 'react'
 import { Stack } from 'expo-router'
 import { Video, ResizeMode, AVPlaybackStatus } from 'expo-av';
 
@@ -14,17 +14,31 @@ type VideoPost = {
         id: string;
         video: string;
         caption: string;
-    }
+    };
+    activePostId: string;
    
 }
 
-const VideoPost = ({post}: VideoPost) => {
+const VideoPost = ({post,activePostId}: VideoPost) => {
 
     const video = useRef<Video>(null);
     const [status,setStatus] = useState<AVPlaybackStatus>();
 
     const isPlaying = status?.isLoaded && status.isPlaying;
 
+    const { height } = useWindowDimensions();
+
+    useEffect(() =>{
+        if(!video.current){
+            return;
+        }
+        if(activePostId !== post.id){
+            video.current.pauseAsync();
+        }
+        if(activePostId === post.id){
+            video.current.playAsync();
+        }
+    },[activePostId,video.current]);
 
     const onPress = () => {
         if(!video.current){
@@ -39,7 +53,7 @@ const VideoPost = ({post}: VideoPost) => {
 
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container,{height}]}>
        
         <Video 
             ref={video}
@@ -80,12 +94,14 @@ export default VideoPost
 
 const styles = StyleSheet.create({
     container:{
-        flex: 1,
+        // flex: 1,
+        
     },
-    video:{},
+    video:{
+        height: '100%',
+    },
     content:{
         flex: 1,
-        backgroundColor: 'rgba(0,0,0,0.7)',
         padding: 10,
     },
     footer:{
