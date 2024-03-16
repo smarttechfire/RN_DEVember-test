@@ -88,7 +88,7 @@ const FeedScreen = () => {
         keyExtractor={(item,index) => `${item.id}-${index}`}
         pagingEnabled
         showsVerticalScrollIndicator={false}
-       
+        decelerationRate={'normal'}
         viewabilityConfigCallbackPairs= {viewabilityConfigCallbackPairs.current}
         // onEndReached={onEndReached}
         // onEndReachedThreshold={3}

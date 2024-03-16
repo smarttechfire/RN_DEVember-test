@@ -1,4 +1,4 @@
-import {  Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native'
+import {  Dimensions, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import { Stack } from 'expo-router'
 import { Video, ResizeMode, AVPlaybackStatus } from 'expo-av';
@@ -53,7 +53,7 @@ const VideoPost = ({post,activePostId}: VideoPost) => {
 
 
   return (
-    <View style={[styles.container,{height}]}>
+    <View style={[styles.container]}>
        
         <Video 
             ref={video}
@@ -94,7 +94,8 @@ export default VideoPost
 
 const styles = StyleSheet.create({
     container:{
-        // flex: 1,
+        flex: 1,
+        height: Dimensions.get('screen').height
         
     },
     video:{
