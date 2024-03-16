@@ -62,7 +62,7 @@ const FeedScreen = () => {
   const viewabilityConfigCallbackPairs = useRef([
     {
       viewabilityConfig: { itemVisiblePercentThreshold: 50 },
-      onViewableItemsChanged: ({ changed, viewableItems }) => {
+      onViewableItemsChanged: ({viewableItems }) => {
         if (viewableItems.length > 0 && viewableItems[0].isViewable) {
           setActivePostId(viewableItems[0].item.id);
         }
@@ -85,7 +85,7 @@ const FeedScreen = () => {
       <FlatList 
         data={posts}
         renderItem={({item}) => <VideoPost post={item} activePostId={activePostId} />}
-        keyExtractor={(item,index) => `${item.id}-${index}`}
+        // keyExtractor={(item,index) => `${item.id}-${index}`}
         pagingEnabled
         showsVerticalScrollIndicator={false}
         decelerationRate={'normal'}
